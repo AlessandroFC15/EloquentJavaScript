@@ -152,3 +152,28 @@ for (var century = 16; century <= 21; century++) {
 //   19: 54.8
 //   20: 84.7
 //   21: 94
+
+/* EVERY AND THE SOME */
+
+// Your code here.
+
+function every(array, method) {
+	for (var i in array) { if (! method(array[i])) return false; }
+  
+  	return true;
+}
+
+function some(array, method) {
+	for (var i in array) { if (method(array[i])) return true; }
+  
+  	return false;
+}
+
+console.log(every([NaN, NaN, NaN], isNaN));
+// → true
+console.log(every([NaN, NaN, 4], isNaN));
+// → false
+console.log(some([NaN, 3, 4], isNaN));
+// → true
+console.log(some([2, 3, 4], isNaN));
+// → false
