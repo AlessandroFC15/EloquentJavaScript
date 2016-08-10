@@ -89,3 +89,66 @@ function averageAge(sex, data) {
 
 console.log(averageAge('f', data))
 
+// Exercises from Chapter 5
+
+// || Flattening ||
+
+var arrays = [[1, 2, 3], [4, 5], [6]];
+// Your code here.
+
+console.log(arrays.reduce(function(a, b) { return a.concat(b) }));
+
+// → [1, 2, 3, 4, 5, 6]
+
+/* || Mother-child age difference || */
+
+function average(array) {
+  function plus(a, b) { return a + b; }
+  return array.reduce(plus) / array.length;
+}
+
+var byName = {};
+ancestry.forEach(function(person) {
+  byName[person.name] = person;
+});
+
+// My code
+
+function motherAge(person, mother) {
+  return person.born - mother.born
+}
+
+var peopleWithMothers = ancestry.filter(function(person) { return byName[person.mother];});
+
+console.log(average(peopleWithMothers.map(function(person) { return motherAge(person, byName[person.mother]);})));
+// → 31.2
+
+/* Historical life expectancy */
+
+function average(array) {
+  function plus(a, b) { return a + b; }
+  return array.reduce(plus) / array.length;
+}
+
+// Your code here.
+
+function age(person) {
+  return person.died - person.born;
+}
+
+function isPersonInCentury(person, century) {
+  return Math.ceil(person.died / 100) == century;
+}
+
+for (var century = 16; century <= 21; century++) {
+  var peopleInCentury = ancestry.filter(function(person) { return isPersonInCentury(person, century); });
+  
+    console.log(century + ":", average(peopleInCentury.map(age)));
+}
+
+// → 16: 43.5
+//   17: 51.2
+//   18: 52.8
+//   19: 54.8
+//   20: 84.7
+//   21: 94
