@@ -1,32 +1,35 @@
+/**
+ * Created by acception on 04/04/17.
+ */
 // 4.1 | The sum of range
 
 // Your code here.
 function sum(array) {
-	var sum = 0;
-    
+    var sum = 0;
+
     for (var i = 0; i < array.length; i++)
-      	sum += array[i];
+        sum += array[i];
    
     return sum;
 }
 
 function range(start, end, step) {
-	if (step == undefined)
-      	if (start <= end)
-      		step = 1;
-  		else
-          	step = -1;
-        
+    if (step == undefined)
+        if (start <= end)
+            step = 1;
+        else
+            step = -1;
+
     var range = [];
-    
-  	if (step > 0) {
-    	for (var i = start; i <= end; i++) 
-      		range.push(i);
+
+    if (step > 0) {
+        for (var i = start; i <= end; i++)
+            range.push(i);
     } else if (step < 0) {
-    	for (var i = start; i >= end; i += step) 
-      		range.push(i);
+        for (var i = start; i >= end; i += step)
+            range.push(i);
     }
-  
+
     return range;
 }
 
@@ -40,16 +43,16 @@ console.log(sum(range(1, 10)));
 // 4.2 | Reversing array
 
 function reverseArray(array) {
-  var newArray = [];
- 
+    var newArray = [];
+
     for (var i = 0; i < array.length; i++)
         newArray.unshift(array[i]);
-        
+
     return newArray;
 }
 
 function reverseArrayInPlace(array) {
-  for (var i = 0; i < array.length / 2; i++)
+    for (var i = 0; i < array.length / 2; i++)
         [array[i], array[array.length - 1 - i]] = [array[array.length - 1 - i], array[i]];
 }
 
@@ -64,36 +67,36 @@ console.log(arrayValue);
 
 // Your code here.
 function arrayToList(array) {
-	return {
-    	value: array[0],
-      	rest: array.length > 1 ? arrayToList(array.slice(1)) : null
+    return {
+        value: array[0],
+        rest: array.length > 1 ? arrayToList(array.slice(1)) : null
     }
 }
 
 function listToArray(list) {
-  	if (list.rest)
-      return [list.value].concat(listToArray(list.rest));
-  	else
-      return [list.value]
+    if (list.rest)
+        return [list.value].concat(listToArray(list.rest));
+    else
+        return [list.value]
 }
 
 function prepend(element, list) {
-	return {
-    	value: element,
-      	rest: list
+    return {
+        value: element,
+        rest: list
     }
 }
 
 function nth(lista, number) {
-	var i = 0;
-  
-  	do {
-        if (i == number) 
-        	return lista.value;
-        else if (lista.rest == null) 
-        	return undefined;
- 
-        lista = lista.rest
+    var i = 0;
+
+    do {
+        if (i == number)
+            return lista.value;
+        else if (lista.rest == null)
+            return undefined;
+
+        lista = lista.rest;
         i++;
     } while (true);
 }
@@ -111,13 +114,13 @@ console.log(nth(arrayToList([10, 20, 30]), 2));
 
 // Your code here.
 function deepEqual(a, b) {
-	if (a != null && typeof a == 'object' && b != null & typeof b == 'object') {
+    if (a != null && typeof a == 'object' && b != null & typeof b == 'object') {
         for (var key in a)
-          if (!deepEqual(a[key], b[key])) return false;
-      
+            if (!deepEqual(a[key], b[key])) return false;
+
         return true;
     } else
-      	return a === b;
+        return a === b;
 }
 
 var obj = {here: {is: "an"}, object: 2};
